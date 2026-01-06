@@ -35,11 +35,14 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h3>Hello, I'm</h3>
-            <h1>Ashok Teli</h1>
+            <h1>
+                <span id="typing-text"></span>
+                <span class="cursor">|</span>
+            </h1>
             <h2>Hardware engineer & UI/UX Enthusiast</h2>
             <p>I design and build responsive, user-focused web & app design with modern technologies. My goal is to create clean, engaging digital experiences that combine functionality with creativity.</p>
             <div class="btn-group">
-               <button class="btn btn-secondary" onclick="location.href='#projects'">
+<button class="btn btn-secondary" onclick="location.href='#projects'">
   <i class="fa-solid fa-eye"></i>
   View My Work
 </button>
@@ -47,6 +50,7 @@
   <i class="fa-solid fa-envelope"></i>
   Get In Touch
 </button>
+
             </div>
            <div class="social-links">
   <a href="#" class="social-icon"><i class="fab fa-figma"></i></a>
@@ -73,10 +77,11 @@
                 <p>I'm a passionate graphic designer with a keen eye for detail and a love for clean, user-focused visuals. From digital branding to UI layouts and illustrations, I craft designs that communicate clearly and leave a lasting impression.</p>
                 <p>What started as curiosity turned into a drive to blend creativity with purpose. I focus on intuitive, thoughtful design that enhances the user experience.</p>
                 <p>Outside the screen, I explore design trends, experiment with motion graphics (like GSAP), and sketch new ideas — always with coffee close by.</p>
-                <button class="btn btn-primary">
-  <i class="fa-solid fa-download"></i> Download Resume
-</button>
-
+   <div class="view-all">
+    <a href="" target="_blank" class="btn btn-primary">
+      <i class="fa-solid fa-download"></i> Download Resume
+    </a>
+   </div>
             </div>
             <div class="code-icon">
                 &lt;/&gt;
@@ -132,20 +137,45 @@
         </div>
     </section>
 
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-        </div>
-        <div class="view-all">
-           <button class="btn btn-primary">
-  <i class="fa-solid fa-arrow-down"></i> View All Projects
-</button>
+<section id="projects">
+  <h2 class="section-title">Featured Projects</h2>
 
-        </div>
-    </section>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <a href="https://www.figma.com/proto/MuCPxo0bKUhrbju74MrnPl/GAME_WEB?node-id=19-20&t=C2DebFEDXovPJrVU-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" class="project-card">
+      <img src="/project1.png" alt="Project 1">
+      <div class="project-overlay">
+        <h3>UI/UX Design</h3>
+      </div>
+    </a>
+
+    <!-- Project 2 -->
+    <a href="" target="_blank" class="project-card">
+      <img src="/project2.png" alt="Project 2">
+      <div class="project-overlay">
+        <h3>Web Design</h3>
+      </div>
+    </a>
+
+    <!-- Project 3 -->
+    <a href="https://yourproject3link.com" target="_blank" class="project-card">
+      <img src="/project3.jpg" alt="Project 3">
+      <div class="project-overlay">
+        <h3>Graphics Design</h3>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- View All Projects -->
+  <div class="view-all">
+    <a href="" target="_blank" class="btn btn-primary">
+      <i class="fa-solid fa-eye"></i> View All Projects
+    </a>
+  </div>
+</section>
+
 
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
@@ -160,7 +190,12 @@
 </div>
                         <div>
                             <div><strong>Email</strong></div>
-                            <div>ashokteli006@gmail.com</div>
+<div>
+  <a href="mailto:ashokteli005@gmail.com" class="email-link">
+    ashokteli005@gmail.com
+  </a>
+</div>
+
                         </div>
                     </div>
                     <div class="contact-item">
@@ -178,25 +213,33 @@
             </div>
             <div class="contact-form">
                 <h3>Send me a message</h3>
-                <form>
-                    <div class="form-group">
-                        <label>Your Name:</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <input type="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Subject:</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message:</label>
-                        <textarea required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">SUBMIT</button>
-                </form>
+            <form id="contactForm">
+  <div class="form-group">
+    <label>Your Name:</label>
+    <input type="text" id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="email" id="email" required>
+  </div>
+
+  <div class="form-group">
+    <label>Subject:</label>
+    <input type="text" id="subject" required>
+  </div>
+
+  <div class="form-group">
+    <label>Message:</label>
+    <textarea id="message" required></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">SUBMIT</button>
+</form>
+
+<div id="successToast">Message sent successfully!</div>
+
+
             </div>
         </div>
     </section>
@@ -206,6 +249,7 @@
             <h4>Ashok Teli</h4>
             <p>UI/UX & Graphics designer passionate about creating beautiful and functional web & App experiences. Let's build something amazing together!</p>
         </div>
+          <div class="footer-grid">
         <div class="footer-section">
             <h4>Quick Links</h4>
             <a href="#home">Home</a>
@@ -220,7 +264,7 @@
             <a href="#">Responsive Design</a>
             <a href="#">Logo Design</a>
         </div>
-
+          </div>
   <p class="footer-text">
     © 2026 All Rights Reserved | Developed by 
     <span class="brand">RutherCloud Solutions</span>
@@ -230,7 +274,4 @@
 <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
-
-
