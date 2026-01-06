@@ -55,3 +55,66 @@ backToTop.addEventListener("click", () => {
 });
 
 
+
+/* text type */
+document.addEventListener("DOMContentLoaded", () => {
+  const text = "Ashok Teli";
+  const typingElement = document.getElementById("typing-text");
+
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      typingElement.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 200); // typing speed
+    }
+  }
+
+  typeEffect();
+});
+
+
+
+// form data preview
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // page reload stop
+
+  // 🔔 show toast
+  const toast = document.getElementById("successToast");
+  toast.classList.add("show");
+
+  // hide after 3 sec
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+
+  // clear form
+  this.reset();
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const statCards = document.querySelectorAll(".stat-card");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); 
+        }
+      });
+    },
+    {
+      threshold: 0.2 
+    }
+  );
+
+  statCards.forEach(card => {
+    observer.observe(card);
+  });
+});
