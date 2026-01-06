@@ -118,6 +118,22 @@
             color: #ccc;
         }
 
+
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  color: #7c5cff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
         .btn-group {
             display: flex;
             gap: 15px;
@@ -270,6 +286,21 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+
+        /* Scroll animation initial state */
+.stat-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+/* When visible */
+.stat-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
         .stat-number {
             font-size: 48px;
             color: #fff;
@@ -290,11 +321,35 @@
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(124, 107, 255, 0.3);
-        }
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(124, 107, 255, 0.35);
+
+  /* 🔥 SHADOW + GLOW */
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(124, 107, 255, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(16px);
+  transition: 0.35s ease;
+}
+
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(124, 107, 255, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+
 
         .skill-card h3 {
             color: #7c6bff;
@@ -307,12 +362,18 @@
             gap: 10px;
         }
 
-        .skill-tag {
-            background: rgba(124, 107, 255, 0.2);
-            padding: 8px 16px;
-            border-radius: 15px;
-            font-size: 14px;
-        }
+       .skill-tag {
+  background: rgba(124, 107, 255, 0.25);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #eae9ff;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.25),
+    0 4px 12px rgba(124, 107, 255, 0.3);
+}
+
 
         .projects-grid {
             display: grid;
@@ -338,6 +399,70 @@
             text-align: center;
             margin-top: 40px;
         }
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 260px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: absolute;
+}
+
+/* Hover lift */
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Overlay */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.15)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.project-overlay p {
+  color: #bdbdfc;
+  font-size: 14px;
+}
+
+
 
         .contact-section {
             max-width: 1200px;
@@ -432,6 +557,21 @@
             background: #9f8fff;
         }
 
+
+
+.email-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  color: #7c6bff;
+  text-decoration: underline;
+}
+
+
+
+
         footer {
             background: rgba(0, 0, 0, 0.3);
             padding: 40px 50px;
@@ -505,10 +645,37 @@
 
 
 
+        
+
+#successToast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #7c5cff, #5b4bff);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 15px;
+  box-shadow: 0 15px 40px rgba(124,92,255,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+  z-index: 9999;
+}
+
+#successToast.show {
+  opacity: 1;
+  bottom: 45px;
+}
+
+
+
+
 #backToTop {
   position: fixed;
   bottom: 30px;
-  left: 25px;        /* 👈 LEFT side */
+  left: 25px;        
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -536,7 +703,7 @@
     height: 46px;
     font-size: 18px;
     bottom: 20px;
-    left: 20px;     /* 👈 mobile left */
+    left: 20px;     
   }
 }
 
@@ -687,3 +854,28 @@
 }
 
 
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 👈 side by side */
+    gap: 30px;
+    align-items: start;
+  }
+
+  .footer-col h4 {
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  .quick-links {
+    margin-top: -20px; /* 👈 thoda upar */
+  }
+
+  .footer-col a,
+  .footer-col p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
