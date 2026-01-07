@@ -1,120 +1,88 @@
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", () => {
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navLinks.classList.toggle("active");
-});
+  // HAMBURGER MENU
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
 
-/* Close menu on link click */
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navLinks.classList.remove("active");
-  });
-});
-
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault(); 
-
-    const targetId = link.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
-
-    targetSection.scrollIntoView({
-      behavior: "smooth"
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navLinks.classList.toggle("active");
     });
 
-    
-    navLinks.classList.remove("active");
-    hamburger.classList.remove("active");
-  });
-});
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
 
+        const targetId = link.getAttribute("href");
+        const targetSection = document.querySelector(targetId);
 
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
 
-
-const backToTop = document.getElementById("backToTop");
-
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) { 
-    backToTop.style.display = "flex";
-  } else {
-    backToTop.style.display = "none";
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
   }
-});
 
-/* Scroll to top on click */
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+  // BACK TO TOP
+  const backToTop = document.getElementById("backToTop");
 
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 200 ? "flex" : "none";
+    });
 
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
-/* text type */
-document.addEventListener("DOMContentLoaded", () => {
-  const text = "Ashok Teli";
+  // TYPE EFFECT
   const typingElement = document.getElementById("typing-text");
+  if (typingElement) {
+    const text = "Ashok Teli";
+    let index = 0;
 
-  let index = 0;
-
-  function typeEffect() {
-    if (index < text.length) {
-      typingElement.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeEffect, 200); // typing speed
+    function typeEffect() {
+      if (index < text.length) {
+        typingElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 200);
+      }
     }
+    typeEffect();
   }
 
-  typeEffect();
-});
-
-
-
-// form data preview
-
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // page reload stop
-
-  // 🔔 show toast
+  // FORM TOAST
+  const contactForm = document.getElementById("contactForm");
   const toast = document.getElementById("successToast");
-  toast.classList.add("show");
 
-  // hide after 3 sec
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000);
+  if (contactForm && toast) {
+    contactForm.addEventListener("submit", e => {
+      e.preventDefault();
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+      contactForm.reset();
+    });
+  }
 
-  // clear form
-  this.reset();
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
+  // STATS SCROLL ANIMATION
   const statCards = document.querySelectorAll(".stat-card");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
+  if (statCards.length) {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
-          observer.unobserve(entry.target); 
+          observer.unobserve(entry.target);
         }
       });
-    },
-    {
-      threshold: 0.2 
-    }
-  );
+    }, { threshold: 0.2 });
 
-  statCards.forEach(card => {
-    observer.observe(card);
-  });
+    statCards.forEach(card => observer.observe(card));
+  }
+
 });
