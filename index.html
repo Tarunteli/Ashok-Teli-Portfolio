@@ -213,38 +213,39 @@
             </div>
             <div class="contact-form">
                 <h3>Send me a message</h3>
-  <form
-  id="contactForm"
-  action="https://formspree.io/f/xvzgelww"
-  method="POST"
->
+ <form id="contactForm">
   <div class="form-group">
     <label>Your Name:</label>
-    <input type="text" name="name" required>
+    <input type="text" required>
   </div>
 
   <div class="form-group">
     <label>Email:</label>
-    <input type="email" name="email" required>
+    <input type="email" required>
   </div>
 
   <div class="form-group">
     <label>Subject:</label>
-    <input type="text" name="subject" required>
+    <input type="text" required>
   </div>
 
   <div class="form-group">
     <label>Message:</label>
-    <textarea name="message" required></textarea>
+    <textarea required></textarea>
   </div>
-
-  <!-- Optional: prevent spam -->
-  <input type="hidden" name="_captcha" value="false">
 
   <button type="submit" class="submit-btn">SUBMIT</button>
 </form>
 
-<div id="successToast">Message sent successfully!</div>
+<!-- Message (hidden by default) -->
+<div id="manualEmailMsg" class="manual-email-msg">
+  ✉️ You can email us at  
+  <a href="mailto:ashokteli006@gmail.com">ashokteli006@gmail.com</a>
+</div>
+
+
+
+<div id="successToast">System is not working. Please email manually.</div>
 
 
             </div>
@@ -282,6 +283,7 @@
 
 </body>
 </html>
+
 
 
 
