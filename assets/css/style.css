@@ -879,3 +879,27 @@
     font-size: 15px;
     line-height: 1.8;
   }
+
+
+
+  .manual-email-msg {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(124, 107, 255, 0.15);
+  color: #eae9ff;
+  font-size: 14px;
+  display: none; 
+}
+
+.manual-email-msg a {
+  color: #7c5cff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.manual-email-msg a:hover {
+  text-decoration: underline;
+}
+
+
