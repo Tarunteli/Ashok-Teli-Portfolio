@@ -86,3 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault(); 
+
+  const msg = document.getElementById("manualEmailMsg");
+  msg.style.display = "block";
+
+  this.reset(); 
+});
+
