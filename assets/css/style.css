@@ -903,3 +903,14 @@
 }
 
 
+
+.manual-email-msg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gmail-logo {
+  width: 22px;
+  height: 22px;
+}
